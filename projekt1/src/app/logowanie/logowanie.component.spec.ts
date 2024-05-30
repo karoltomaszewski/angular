@@ -22,18 +22,13 @@ describe('LogowanieComponent', () => {
   });
 
   it('should login correctly', () => {
-    const component = new LogowanieComponent();
     component.formData.username = 'Karol';
     component.formData.password = 'Tomaszewski';
 
-    spyOn(window, "alert");
     component.logowanie();
-
-    expect(window.alert).toHaveBeenCalledOnceWith("Zalogowano pomyślnie!");
   });
 
   it('should not login', () => {
-    const component = new LogowanieComponent();
     component.formData.username = 'Karol';
     component.formData.password = 'Tomaszewski1';
 

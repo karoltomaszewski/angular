@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule} from "@angular/forms";
+import {AuthService} from "../auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-logowanie',
@@ -9,6 +11,9 @@ import { FormsModule} from "@angular/forms";
   styleUrl: './logowanie.component.scss'
 })
 export class LogowanieComponent {
+  constructor(private authService: AuthService, private router: Router) {
+  }
+
   formData = {
     username: '',
     password: '',
@@ -16,7 +21,8 @@ export class LogowanieComponent {
 
   logowanie() {
     if (this.formData.username === 'Karol' && this.formData.password === 'Tomaszewski') {
-      alert('Zalogowano pomyślnie!');
+      this.authService.login();
+      this.router.navigate(['/dashboard']);
     } else {
       alert('Błąd logowania. Sprawdź dane.');
     }
